@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>КИЇВ БЕТОН — Замовлення Бетону від Виробника у Києві та Області</title>
+    <meta name="description" content="Швидке замовлення бетону М100-М500 та блоків ФБС напряму від виробника. Доставка міксером від 2 годин по Києву та області.">
+    
+    <!-- Mobile App PWA Meta Tags -->
+    <meta name="theme-color" content="#0F1217">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Київ Бетон">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800;900&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Minimal CSS -->
+    <link rel="stylesheet" href="styles-minimal.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="min-header">
+        <div class="container min-header-container">
+            <a href="#" class="min-logo">
+                <div class="min-logo-icon"><i class="fa-solid fa-cubes-stacked"></i></div>
+                <div class="min-logo-text">
+                    <span class="min-logo-title">КИЇВ <strong>БЕТОН</strong></span>
+                    <span class="min-logo-sub">Завод-Виробник</span>
+                </div>
+            </a>
+
+            <div class="min-header-contacts">
+                <a href="tel:+380966992541" class="min-phone">
+                    <i class="fa-solid fa-phone-volume text-orange"></i>
+                    <span>+38 (096) 699-25-41</span>
+                </a>
+                <button type="button" class="btn btn-primary btn-sm" data-modal="modal-callback">
+                    <i class="fa-solid fa-phone"></i> Замовити дзвінок
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Minimal Hero with Instant Calculator -->
+    <section class="min-hero">
+        <div class="container min-hero-grid">
+            
+            <div class="min-hero-text">
+                <div class="min-badge"><i class="fa-solid fa-truck-fast"></i> Доставка від 2 годин • Власний автопарк 30+ міксерів</div>
+                <h1 class="min-title">
+                    БЕТОН ТА БЛОКИ ФБС <br>
+                    <span class="text-orange">НАПРЯМУ ВІД ВИРОБНИКА</span>
+                </h1>
+                <p class="min-subtitle">
+                    Без посередників та переплат. Сертифікована якість ДСТУ, паспорт якості з кожною машиною. Доставка по Києву та області.
+                </p>
+
+                <div class="min-stats">
+                    <div class="stat-item">
+                        <span class="stat-num">30+</span>
+                        <span class="stat-lbl">міксерів у парку</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-num">0%</span>
+                        <span class="stat-lbl">націнки посередників</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-num">24/7</span>
+                        <span class="stat-lbl">прийом замовлень</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Express Calculator & Order Card -->
+            <div class="min-calc-card">
+                <div class="min-calc-header">
+                    <h3><i class="fa-solid fa-calculator text-orange"></i> Швидкий розрахунок та замовлення</h3>
+                    <p>Вкажіть марку та об'єм для отримання оптової ціни зі знижкою</p>
+                </div>
+
+                <form id="minCalcForm">
+                    <div class="min-form-group">
+                        <label>Марка бетону:</label>
+                        <select id="minGradeSelect">
+                            <option value="М200 (В15)">Бетон М200 (В15) — Для фундаментів та стяжок</option>
+                            <option value="М250 (В20)">Бетон М250 (В20) — Для парканів та сходів</option>
+                            <option value="М300 (В22,5)" selected>Бетон М300 (В22,5) — Для плит та перекриттів (ТОП)</option>
+                            <option value="М350 (В25)">Бетон М350 (В25) — Високоміцний</option>
+                            <option value="М400 (В30)">Бетон М400 (В30) — Для промислових об'єктів</option>
+                            <option value="М100 (В7,5)">Бетон М100 (В7,5) — Підготовчий</option>
+                            <option value="М150 (В12,5)">Бетон М150 (В12,5) — Легкий</option>
+                        </select>
+                    </div>
+
+                    <div class="min-form-row">
+                        <div class="min-form-group">
+                            <label>Об'єм (м³):</label>
+                            <input type="number" id="minVolumeInput" value="10" min="1" step="0.5" required>
+                        </div>
+                        <div class="min-form-group">
+                            <label>Бетононасос:</label>
+                            <select id="minPumpSelect">
+                                <option value="Ні">Не потрібен</option>
+                                <option value="Так (автобетононасос)">Потрібен насос</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="min-result-box">
+                        <div class="min-res-price-wrap">
+                            <span>Розрахунок вартості:</span>
+                            <strong id="minTotalPrice">Ціна за запитом</strong>
+                        </div>
+                        <small>* Персональна знижка залежно від об'єму</small>
+                    </div>
+
+                    <div class="min-form-group" style="margin-top: 14px;">
+                        <input type="tel" id="minPhoneInput" placeholder="+38 (096) 699-25-41" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block btn-lg">
+                        <i class="fa-solid fa-paper-plane"></i> Отримати ціну зі знижкою
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Minimal Catalog Grid -->
+    <section class="min-section">
+        <div class="container">
+            <div class="min-section-title">
+                <h2>Каталог Товарного Бетону</h2>
+                <p>Прямі поставки від завода-виробника по Києву та області</p>
+            </div>
+
+            <div class="min-catalog-grid">
+                <!-- Card M100 -->
+                <div class="min-card">
+                    <div class="min-card-top">
+                        <h4>Бетон М100</h4>
+                        <span class="min-card-class">Клас В7,5</span>
+                    </div>
+                    <div class="min-card-price">Ціна заводу <span>зі знижкою</span></div>
+                    <p class="min-card-sub">Для підготовчих робіт та ненавантажених плит</p>
+                    <button type="button" class="btn btn-primary btn-block btn-sm" data-modal="modal-order" data-grade-title="Бетон М100 (В7,5)">
+                        <i class="fa-solid fa-calculator"></i> Дізнатися ціну
+                    </button>
+                </div>
+
+                <!-- Card M150 -->
+                <div class="min-card">
+                    <div class="min-card-top">
+                        <h4>Бетон М150</h4>
+                        <span class="min-card-class">Клас В12,5</span>
+                    </div>
+                    <div class="min-card-price">Ціна заводу <span>зі знижкою</span></div>
+                    <p class="min-card-sub">Для стяжок, тротуарних доріжок та бордюрів</p>
+                    <button type="button" class="btn btn-primary btn-block btn-sm" data-modal="modal-order" data-grade-title="Бетон М150 (В12,5)">
+                        <i class="fa-solid fa-calculator"></i> Дізнатися ціну
+                    </button>
+                </div>
+
+                <!-- Card M200 -->
+                <div class="min-card min-card-pop">
+                    <div class="min-pop-tag">ХІТ ПРОДАЖІВ</div>
+                    <div class="min-card-top">
+                        <h4>Бетон М200</h4>
+                        <span class="min-card-class">Клас В15</span>
+                    </div>
+                    <div class="min-card-price">Оптова ціна <span>виробника</span></div>
+                    <p class="min-card-sub">Найкращий вибір для фундаменту приватного будинку</p>
+                    <button type="button" class="btn btn-primary btn-block btn-sm" data-modal="modal-order" data-grade-title="Бетон М200 (В15)">
+                        <i class="fa-solid fa-calculator"></i> Дізнатися ціну
+                    </button>
+                </div>
+
+                <!-- Card M300 -->
+                <div class="min-card min-card-pop">
+                    <div class="min-pop-tag">ХІТ ПРОДАЖІВ</div>
+                    <div class="min-card-top">
+                        <h4>Бетон М300</h4>
+                        <span class="min-card-class">Клас В22,5</span>
+                    </div>
+                    <div class="min-card-price">Оптова ціна <span>виробника</span></div>
+                    <p class="min-card-sub">Для монолітних плит, перекриттів та армопоясу</p>
+                    <button type="button" class="btn btn-primary btn-block btn-sm" data-modal="modal-order" data-grade-title="Бетон М300 (В22,5)">
+                        <i class="fa-solid fa-calculator"></i> Дізнатися ціну
+                    </button>
+                </div>
+
+                <!-- Card M350 -->
+                <div class="min-card">
+                    <div class="min-card-top">
+                        <h4>Бетон М350</h4>
+                        <span class="min-card-class">Клас В25</span>
+                    </div>
+                    <div class="min-card-price">Спеціальна <span>пропозиція</span></div>
+                    <p class="min-card-sub">Високоміцний для колонів, плит та несучих стін</p>
+                    <button type="button" class="btn btn-primary btn-block btn-sm" data-modal="modal-order" data-grade-title="Бетон М350 (В25)">
+                        <i class="fa-solid fa-calculator"></i> Дізнатися ціну
+                    </button>
+                </div>
+
+                <!-- Card M400 -->
+                <div class="min-card">
+                    <div class="min-card-top">
+                        <h4>Бетон М400</h4>
+                        <span class="min-card-class">Клас В30</span>
+                    </div>
+                    <div class="min-card-price">Спеціальна <span>пропозиція</span></div>
+                    <p class="min-card-sub">Спеціальний важкий бетон для промислових об'єктів</p>
+                    <button type="button" class="btn btn-primary btn-block btn-sm" data-modal="modal-order" data-grade-title="Бетон М400 (В30)">
+                        <i class="fa-solid fa-calculator"></i> Дізнатися ціну
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Minimal FBS Blocks Section -->
+    <section class="min-section min-bg-alt">
+        <div class="container">
+            <div class="min-section-title">
+                <h2>Фундаментні Блоки ФБС</h2>
+                <p>Сертифіковані блоки з доставкою та розвантаженням маніпулятором</p>
+            </div>
+
+            <div class="min-fbs-grid">
+                <div class="min-fbs-item">
+                    <div>
+                        <strong>ФБС 24-3-6</strong>
+                        <span>2380х300х580 мм (0.97 т)</span>
+                    </div>
+                    <button type="button" class="btn btn-primary btn-sm" data-modal="modal-order" data-grade-title="ФБС 24-3-6">
+                        Дізнатися ціну
+                    </button>
+                </div>
+                <div class="min-fbs-item">
+                    <div>
+                        <strong>ФБС 24-4-6</strong>
+                        <span>2380х400х580 мм (1.30 т)</span>
+                    </div>
+                    <button type="button" class="btn btn-primary btn-sm" data-modal="modal-order" data-grade-title="ФБС 24-4-6">
+                        Дізнатися ціну
+                    </button>
+                </div>
+                <div class="min-fbs-item">
+                    <div>
+                        <strong>ФБС 24-5-6</strong>
+                        <span>2380х500х580 мм (1.63 т)</span>
+                    </div>
+                    <button type="button" class="btn btn-primary btn-sm" data-modal="modal-order" data-grade-title="ФБС 24-5-6">
+                        Дізнатися ціну
+                    </button>
+                </div>
+                <div class="min-fbs-item">
+                    <div>
+                        <strong>ФБС 24-6-6</strong>
+                        <span>2380х600х580 мм (1.96 т)</span>
+                    </div>
+                    <button type="button" class="btn btn-primary btn-sm" data-modal="modal-order" data-grade-title="ФБС 24-6-6">
+                        Дізнатися ціну
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Simple Fast Order CTA Banner -->
+    <section class="min-cta">
+        <div class="container min-cta-box">
+            <div>
+                <h2>Потрібна консультація інженера?</h2>
+                <p>Зателефонуйте прямо зараз — підберемо марку та розрахуємо точну вартість за 1 хвилину!</p>
+            </div>
+            <div class="min-cta-btns">
+                <a href="tel:+380966992541" class="btn btn-light btn-lg">
+                    <i class="fa-solid fa-phone"></i> +38 (096) 699-25-41
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="min-footer">
+        <div class="container min-footer-container">
+            <p>&copy; 2026 ТОВ "КИЇВ БЕТОН". Виробництво та доставка бетону у Києві та області.</p>
+            <div class="min-footer-links">
+                <a href="tel:+380966992541">+38 (096) 699-25-41</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Action Widget -->
+    <div class="floating-widget">
+        <a href="https://viber.click/+380966992541" target="_blank" class="float-btn float-viber" title="Viber">
+            <i class="fa-brands fa-viber"></i>
+        </a>
+        <a href="https://t.me/kyiv_beton" target="_blank" class="float-btn float-telegram" title="Telegram">
+            <i class="fa-brands fa-telegram"></i>
+        </a>
+        <button type="button" class="float-btn float-phone" data-modal="modal-callback" title="Дзвінок">
+            <i class="fa-solid fa-phone-volume"></i>
+        </button>
+    </div>
+
+    <!-- Modals -->
+    <div class="modal-overlay" id="modal-order">
+        <div class="modal-dialog">
+            <button type="button" class="modal-close">&times;</button>
+            <div class="modal-header">
+                <h3>Дізнатися ціну зі знижкою</h3>
+                <p id="modalOrderProductTitle">Бетон М300 (В22,5)</p>
+            </div>
+            <form id="orderForm">
+                <input type="hidden" id="modalSelectedProduct" name="product" value="Бетон М300">
+                <div class="form-group">
+                    <label>Ваше ім'я</label>
+                    <input type="text" required placeholder="Олександр">
+                </div>
+                <div class="form-group">
+                    <label>Номер телефону</label>
+                    <input type="tel" required placeholder="+38 (096) 699-25-41">
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">
+                    Отримати персональну ціну
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-callback">
+        <div class="modal-dialog">
+            <button type="button" class="modal-close">&times;</button>
+            <div class="modal-header">
+                <h3>Замовити зворотний дзвінок</h3>
+                <p>Передзвонимо за 60 секунд</p>
+            </div>
+            <form id="callbackForm">
+                <div class="form-group">
+                    <label>Ваше ім'я</label>
+                    <input type="text" required placeholder="Олександр">
+                </div>
+                <div class="form-group">
+                    <label>Номер телефону</label>
+                    <input type="tel" required placeholder="+38 (096) 699-25-41">
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">
+                    Чекаю на дзвінок
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-success">
+        <div class="modal-dialog text-center">
+            <button type="button" class="modal-close">&times;</button>
+            <div class="success-icon"><i class="fa-solid fa-circle-check"></i></div>
+            <h3>Дякуємо! Заявку прийнято</h3>
+            <p>Наш менеджер зателефонує вам протягом 5 хвилин та повідомить точну ціну зі знижкою.</p>
+            <button type="button" class="btn btn-primary" onclick="closeAllModals()">Зрозуміло</button>
+        </div>
+    </div>
+
+    <!-- JS Logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const minCalcForm = document.getElementById('minCalcForm');
+
+            if (minCalcForm) {
+                minCalcForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    minCalcForm.reset();
+                    openModal(document.getElementById('modal-success'));
+                });
+            }
+
+            // Modal delegation
+            document.addEventListener('click', (e) => {
+                const trigger = e.target.closest('[data-modal]');
+                if (trigger) {
+                    e.preventDefault();
+                    const modalId = trigger.getAttribute('data-modal');
+                    const targetModal = document.getElementById(modalId);
+                    if (modalId === 'modal-order') {
+                        const title = trigger.getAttribute('data-grade-title') || 'Бетон М300';
+                        document.getElementById('modalOrderProductTitle').textContent = title;
+                        document.getElementById('modalSelectedProduct').value = title;
+                    }
+                    if (targetModal) openModal(targetModal);
+                }
+
+                if (e.target.closest('.modal-close')) {
+                    closeAllModals();
+                }
+            });
+
+            const modalOverlays = document.querySelectorAll('.modal-overlay');
+            modalOverlays.forEach(overlay => {
+                overlay.addEventListener('click', (e) => {
+                    if (e.target === overlay) closeAllModals();
+                });
+            });
+
+            function openModal(modal) {
+                closeAllModals();
+                if (modal) {
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            }
+
+            window.closeAllModals = function() {
+                modalOverlays.forEach(m => m.classList.remove('active'));
+                document.body.style.overflow = '';
+            };
+
+            const orderForm = document.getElementById('orderForm');
+            const callbackForm = document.getElementById('callbackForm');
+            [orderForm, callbackForm].forEach(f => {
+                if (f) {
+                    f.addEventListener('submit', (e) => {
+                        e.preventDefault();
+                        f.reset();
+                        closeAllModals();
+                        openModal(document.getElementById('modal-success'));
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
